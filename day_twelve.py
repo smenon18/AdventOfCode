@@ -82,13 +82,13 @@ def main() -> None:
     pos = (20, 0)  # hard code 'S'
     matrix[20][0] = 0  # set 'S' to 0
     end = (20, 43)  # hard code 'E'
-    matrix[20][43] = 25  # set 'E' to 25
+    matrix[20][43] = 25  # set 'E' to 25 not 26 ...
     n_list = create_neighbor_list(matrix)
     print('Part A:')
     print(bfs(n_list, pos, end))
     # print(dfs(pos, 0, matrix, set(), end, n_list))
     print('Part B:')
-    print(min(bfs(n_list,(x, y), end) for (x, y) in create_neighbor_list(matrix) if matrix[x][y] == 0))
+    print(min(bfs(n_list, (x, y), end) for (x, y) in n_list if matrix[x][y] == 0))
 
 
 if __name__ == '__main__':
