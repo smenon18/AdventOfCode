@@ -84,8 +84,6 @@ def main() -> None:
     end = (20, 43)  # hard code 'E'
     matrix[20][43] = 25  # set 'E' to 25
     n_list = create_neighbor_list(matrix)
-    for r in matrix:
-        print(r)
     print('Part A:')
     print(bfs(n_list, pos, end))
     # print(dfs(pos, 0, matrix, set(), end, n_list))
