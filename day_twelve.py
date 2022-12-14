@@ -56,7 +56,7 @@ def bfs(neighbor_list: Dict, start: Tuple[int, int], end: Tuple[int, int]) -> in
 
 def dfs(pos: Tuple[int, int], steps: int, board: List[List[int]], visited: Set[Tuple[int, int]], end: Tuple[int, int],
         neighbor_list: Dict) -> int:
-    if board[pos[0]][pos[1]] == end:
+    if pos == end:
         return steps
     visited.add(pos)
     next_possible = neighbor_list[pos]
