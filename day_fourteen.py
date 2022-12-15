@@ -15,14 +15,12 @@ def main() -> None:
     for line in file.read().split('\n'):
         coords = line.split('->')
         p = coords.pop(0).strip().split(',')
-        print(p)
         px = int(p[0])
         py = int(p[1])
         while len(coords) != 0:
             n = coords.pop(0).strip().split(',')
             nx = int(n[0])
             ny = int(n[1])
-            print(n)
             c = 'x'
             if px > nx:
                 r = range(nx, px + 1)
@@ -72,6 +70,31 @@ def main() -> None:
                 cave[curr] = '+'
     print('Part A:')
     print(settled_sand)
+    for i in range(min_x - 1000, max_x + 1001):
+        cave_b[(i, max_y + 2)] = '#'
+    min_x -= 1000
+    max_x += 1000
+    settled_sand_b = 0
+    curr = sand_start
+    while sand_start not in cave_b.keys() or not cave_b[sand_start] == '+':
+        settled = False
+        cave_b[curr] = '+'
+        while not settled:
+            if not (curr[0], curr[1] + 1) in cave_b.keys() or cave_b[curr[0], curr[1] + 1] is None:
+                cave_b[curr], cave_b[curr[0], curr[1] + 1] = None, cave_b[curr]
+                curr = (curr[0], curr[1] + 1)
+            elif not (curr[0] - 1, curr[1] + 1) in cave_b.keys() or cave_b[curr[0] - 1, curr[1] + 1] is None:
+                cave_b[curr], cave_b[curr[0] - 1, curr[1] + 1] = None, cave_b[curr]
+                curr = (curr[0] - 1, curr[1] + 1)
+            elif not (curr[0] + 1, curr[1] + 1) in cave_b.keys() or cave_b[curr[0] + 1, curr[1] + 1] is None:
+                cave_b[curr], cave_b[curr[0] + 1, curr[1] + 1] = None, cave_b[curr]
+                curr = (curr[0] + 1, curr[1] + 1)
+            else:
+                settled = True
+                settled_sand_b += 1
+                curr = sand_start
+    print('Part B:')
+    print(settled_sand_b)
 
 
 if __name__ == '__main__':
