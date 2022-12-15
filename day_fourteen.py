@@ -76,7 +76,7 @@ def main() -> None:
     max_x += 1000
     settled_sand_b = 0
     curr = sand_start
-    while sand_start not in cave_b.keys() or not cave_b[sand_start] == '+':
+    while sand_start not in cave_b.keys() and not cave_b[sand_start] == '+':
         settled = False
         cave_b[curr] = '+'
         while not settled:
