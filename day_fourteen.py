@@ -1,3 +1,4 @@
+from copy import deepcopy
 from typing import TypeAlias
 
 
@@ -24,14 +25,14 @@ def main() -> None:
             print(n)
             c = 'x'
             if px > nx:
-                r = range(nx, px)
+                r = range(nx, px + 1)
             elif px < nx:
-                r = range(px,nx)
+                r = range(px, nx + 1)
             elif py > ny:
-                r = range(ny,py)
+                r = range(ny, py + 1)
                 c = 'y'
             else:
-                r = range(py, ny)
+                r = range(py, ny + 1)
                 c = 'y'
             for i in r:
                 if c == 'x':
@@ -43,8 +44,34 @@ def main() -> None:
     sand_start = (500, 0)
     min_x, max_x = min(p[0] for p in cave.keys()), max(p[0] for p in cave.keys())
     min_y, max_y = min(p[1] for p in cave.keys()), max(p[1] for p in cave.keys())
-    print(cave)
-    print(min_x, max_x, sand_start, min_y, max_y)
+    cave_b = deepcopy(cave)
+    settled_sand = 0
+    overflow = False
+    curr = sand_start
+    cave[curr] = '+'
+    while not overflow:
+        settled = False
+        while not settled:
+            if not min_x <= curr[0] <= max_x or not curr[1] <= max_y:
+                cave[curr] = None
+                overflow = True
+                break
+            if not (curr[0], curr[1] + 1) in cave.keys() or cave[curr[0], curr[1] + 1] is None:
+                cave[curr], cave[curr[0], curr[1] + 1] = None, cave[curr]
+                curr = (curr[0], curr[1] + 1)
+            elif not (curr[0] - 1, curr[1] + 1) in cave.keys() or cave[curr[0] - 1, curr[1] + 1] is None:
+                cave[curr], cave[curr[0] - 1, curr[1] + 1] = None, cave[curr]
+                curr = (curr[0] - 1, curr[1] + 1)
+            elif not (curr[0] + 1, curr[1] + 1) in cave.keys() or cave[curr[0] + 1, curr[1] + 1] is None:
+                cave[curr], cave[curr[0] + 1, curr[1] + 1] = None, cave[curr]
+                curr = (curr[0] + 1, curr[1] + 1)
+            else:
+                settled = True
+                settled_sand += 1
+                curr = sand_start
+                cave[curr] = '+'
+    print('Part A:')
+    print(settled_sand)
 
 
 if __name__ == '__main__':
