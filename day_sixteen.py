@@ -22,7 +22,7 @@ def calc_mins(v_from: str, v_to: str, valves: dict):
             if next_tunnel not in visited:
                 visited.add(next_tunnel)
                 to_visit.append((next_tunnel, mins + 1))
-    print('You are stuck Step Bro')
+    print('You are stuck')
     return None
 
 
