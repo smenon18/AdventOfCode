@@ -11,7 +11,7 @@ def main() -> None:
     Day Nine Problem for Advent Of Code 2022
     :return:
     """
-    file = open('./input/dayNine.txt', 'r')
+    file = open('input/dayNine.txt', 'r')
     lines = file.read().splitlines()
     file.close()
     movements = [(line.split()[0], int(line.split()[1])) for line in lines]

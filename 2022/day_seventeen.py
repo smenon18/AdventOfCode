@@ -5,7 +5,7 @@ def main() -> None:
     Day Seventeen of Advent of Code 2022
     :return: None
     """
-    file = open('./input/daySeventeen.txt', 'r')
+    file = open('input/daySeventeen.txt', 'r')
     push_seq = list(file.read())
     file.close()
     width = 7  # width is seven spawn 3 from left

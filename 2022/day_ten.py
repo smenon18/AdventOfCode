@@ -14,7 +14,7 @@ def main() -> None:
     Day Ten Advent of Code problem
     :return: None
     """
-    file = open('./input/dayTen.txt', 'r')
+    file = open('input/dayTen.txt', 'r')
     instructions = [line for line in file.read().splitlines()]
     file.close()
     signals = list(exec_op(inst.split() for inst in instructions))

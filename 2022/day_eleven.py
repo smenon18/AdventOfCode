@@ -6,7 +6,7 @@ def main() -> None:
     Day eleven problem for Advent of code 2022
     :return: None
     """
-    file = open('./input/dayEleven.txt', 'r')
+    file = open('input/dayEleven.txt', 'r')
     monkeys = []
     for chunk in file.read().split('\n\n'):
         num = 0

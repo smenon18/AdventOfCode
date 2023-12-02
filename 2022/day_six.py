@@ -5,7 +5,7 @@ def main():
     Day Six Problem for Advent Of Code 2022
     :return: None
     """
-    file = open('./input/daySix.txt', "r")
+    file = open('input/daySix.txt', "r")
     signal = file.read()
     file.close()
     for i in range(len(signal)-4):

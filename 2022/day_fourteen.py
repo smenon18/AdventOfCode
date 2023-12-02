@@ -10,7 +10,7 @@ def main() -> None:
     Day 14 problem for Advent of Code 2022
     :return: None
     """
-    file = open('./input/dayFourteen.txt', 'r')
+    file = open('input/dayFourteen.txt', 'r')
     cave: Cave = {}
     for line in file.read().split('\n'):
         coords = line.split('->')

@@ -9,7 +9,7 @@ def main() -> None:
     Day fifteen of Advent of Code 2022
     :return: None
     """
-    file = open('./input/dayFifteen.txt', 'r')
+    file = open('input/dayFifteen.txt', 'r')
     limit = 2000000
     beacons: set[int] = set()  # keep set of beacons and signals to remove from other set at end
     beaconless: set[int] = set()

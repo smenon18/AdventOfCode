@@ -1,11 +1,12 @@
 from collections import deque
+from typing import Union
 
 
 def get_flow(state: tuple):
     return state[4] + state[0] * state[3]
 
 
-def calc_mins(v_from: str, v_to: str, valves: dict):
+def calc_mins(v_from: str, v_to: str, valves: dict) -> Union[int, None]:
     if v_from == v_to:
         return 0
     visited = set()
@@ -26,7 +27,18 @@ def calc_mins(v_from: str, v_to: str, valves: dict):
     return None
 
 
-def bfs(valve_name: str, mins_left: int, valves, part2=False):
+def get_distances(valves):
+    flowing_valves = [v['name'] for v in valves.values() if v['flow_rate'] > 0]
+    dist_to_others = {}
+    for v in valves.keys():
+        dist_to_others[v] = {}
+        for other in flowing_valves:
+            if other is not v and other in flowing_valves:
+                dist_to_others[v][other] = calc_mins(v, other, valves)
+    return dist_to_others
+
+
+def bfs(valve_name: str, mins_left: int, valves, part2=False) -> int:
     flowing_valves = [v['name'] for v in valves.values() if v['flow_rate'] > 0]
     dist_to_others = {}
     for v in valves.keys():
@@ -49,8 +61,7 @@ def bfs(valve_name: str, mins_left: int, valves, part2=False):
                           curr_state[3] + valve['flow_rate'], curr_state[4] + curr_state[3])
             valve_states.append(curr_state)
             if part2:
-                all_opened = sorted(curr_state[2])
-                all_opened = tuple(all_opened)
+                all_opened = tuple(sorted(curr_state[2]))
                 if state_best.get(all_opened, 0) < get_flow(curr_state):
                     state_best[all_opened] = get_flow(curr_state)
                     state_all[all_opened] = curr_state
@@ -81,7 +92,7 @@ def main() -> None:
     Day sixteen of Advent of Code 2022
     :return: None
     """
-    file = open('./input/daySixteen.txt', 'r')
+    file = open('input/daySixteen.txt', 'r')
     valves = {}
     for line in file.read().split('\n'):
         l = line.split()

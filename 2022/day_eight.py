@@ -10,7 +10,7 @@ def main() -> None:
 
     test = lambda l: l[-1]
     
-    file = open('./input/dayEight.txt', 'r')
+    file = open('input/dayEight.txt', 'r')
     lines = file.read().splitlines()
     file.close()
     trees = {(x, y): int(h) for y, row in enumerate(lines) for x, h in enumerate(list(row))}

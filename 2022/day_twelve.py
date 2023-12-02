@@ -76,7 +76,7 @@ def main() -> None:
     Day Twelve problem for Advent of Code 2022
     :return: None
     """
-    file = open('./input/dayTwelve.txt', 'r')
+    file = open('input/dayTwelve.txt', 'r')
     matrix: List[List[int]] = [[ord(c) - ord('a') for c in line] for line in file.read().split('\n')]
     file.close()
     pos = (20, 0)  # hard code 'S'

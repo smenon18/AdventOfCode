@@ -5,7 +5,7 @@ def main():
     Day Three Problem for Advent Of Code 2022
     :return:
     """
-    file = open('./input/dayThree.txt', "r")
+    file = open('input/dayThree.txt', "r")
     rucksacks = [x for x in file.read().split("\n")]
     file.close()
     sum_a = 0

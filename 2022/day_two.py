@@ -29,7 +29,7 @@ def main():
     }
     running_score_a = 0
     running_score_b = 0
-    file = open('./input/dayTwo.txt', "r")
+    file = open('input/dayTwo.txt', "r")
     for strat in file.read().split("\n"):
         running_score_a += score_sheet_a[strat]
         running_score_b += score_sheet_b[strat]

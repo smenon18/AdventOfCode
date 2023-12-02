@@ -5,7 +5,7 @@ def main():
     Day Four Problem for Advent Of Code 2022
     :return: None
     """
-    file = open('./input/dayFour.txt', "r")
+    file = open('input/dayFour.txt', "r")
     elf_pairs = [[i for i in x.split(",")] for x in file.read().split("\n")]
     file.close()
     part_overlap = 0

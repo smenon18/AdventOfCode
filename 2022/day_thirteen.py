@@ -54,10 +54,10 @@ def main() -> None:
     Day Thirteen of Advent of Code 2022
     :return: None
     """
-    file = open('./input/dayThirteen.txt', 'r')
+    file = open('input/dayThirteen.txt', 'r')
     packet_pairs_str: list[list[str]] = [packets.split('\n') for packets in file.read().split('\n\n')]
     file.close()
-    file = open('./input/dayThirteen.txt', 'r')
+    file = open('input/dayThirteen.txt', 'r')
     packet_list: list[Packet] = [eval(line) for line in file.read().split('\n') if line != '']
     file.close()
     packet_pairs: list[PacketPair] = [(eval(p[0]), eval(p[1])) for p in packet_pairs_str]

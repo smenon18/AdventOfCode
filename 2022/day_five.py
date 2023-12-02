@@ -6,7 +6,7 @@ def main():
     Day Five Problem for Advent Of Code 2022
     :return: None
     """
-    file = open('./input/dayFive.txt', "r")
+    file = open('input/dayFive.txt', "r")
     parts = [i for i in file.read().split("\n\n")]
     stacks = [[] for _ in range(9)]
     for line in reversed(list(parts[0].splitlines())):

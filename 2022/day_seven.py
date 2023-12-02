@@ -21,7 +21,7 @@ def main() -> None:
     Day Seven Problem for Advent Of Code 2022
     :return: None
     """
-    file = open('./input/daySeven.txt', 'r')
+    file = open('input/daySeven.txt', 'r')
     lines = file.readlines()
     working_directory = '~'  # home dir is placeholder should not actually be used
     while lines:
