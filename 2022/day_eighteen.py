@@ -6,7 +6,7 @@ def main() -> None:
     Day Eighteen problem for Advent of Code 2022
     :return: None
     """
-    file = open('./input/dayEighteen.txt', 'r')
+    file = open('input/dayEighteen.txt', 'r')
     lava: set[tuple[int, int, int]] = set()
     for line in file.read().split('\n'):
         x, y, z = line.split(',')
