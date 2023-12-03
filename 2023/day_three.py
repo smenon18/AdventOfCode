@@ -14,12 +14,6 @@ def find_symbol(data, min_x, min_y, max_x, max_y) -> bool:
     return False
 
 
-def get_symbol(data, x, y):
-    if 0 <= x <= len(data) and 0 <= y < len(data[0]) and data[x][y] != '.' and not data[x][y].isdigit():
-        return data[x][y], (x, y)
-    return None
-
-
 def main() -> None:
     """
     Advent of Code 2023 day 3
