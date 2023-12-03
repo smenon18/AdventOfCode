@@ -4,7 +4,7 @@ def main():
     :return:
     """
     sumIds = 0
-    sumPower = 0;
+    sumPower = 0
     file = open('input/dayTwo.txt', "r")
     for line in file:
         data = line.split(":")
@@ -21,7 +21,6 @@ def main():
         for id, games in game_data:
             valid = True
             game_power = {'red': 0, 'blue': 0, 'green': 0}
-            game_power_total = 0
             for game in games:
                 if game.get('red', 0) > 12 or game.get('green', 0) > 13 or game.get('blue', 0) > 14:
                     valid = False
@@ -32,6 +31,7 @@ def main():
                 sumIds += id
             game_power_total = game_power['red'] * game_power['blue'] * game_power['green']
             sumPower += game_power_total
+    file.close()
     print('Part 1:', str(sumIds))
     print('Part 2:', str(sumPower))
 
