@@ -36,8 +36,7 @@ def main() -> None:
                 sum_part_nums += int(match.group())
             for x in range(min_x, max_x + 1):
                 for y in range(min_y, max_y):
-                    c = data[x][y]
-                    if c == '*':
+                    if data[x][y] == '*':
                         gears[(x, y)].append(num)
     print('Part 1:', sum_part_nums)
     sum_gear_ratio = 0
