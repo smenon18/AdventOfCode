@@ -1,6 +1,3 @@
-from collections import defaultdict
-
-
 def main() -> None:
     """
     Advent Of Code Day 4
