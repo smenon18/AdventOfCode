@@ -1,6 +1,13 @@
 import math
 
 
+def calc(a, b, c) -> int:
+    dis = math.sqrt(b ** 2 - 4 * a * c)
+    x1 = math.floor((b + dis) / 2 * a)
+    x2 = math.ceil((b - dis) / 2 * a) - 1
+    return abs(x2 - x1)
+
+
 def main() -> None:
     """
     Advent of Code day 6 solution
@@ -14,18 +21,11 @@ def main() -> None:
     big_dist = int("".join(lines[1].split(":")[1].strip().split()))
     mul = 1
     for i in range(len(times)):
-        min = min_dists[i]
+        min_dist = min_dists[i]
         time = times[i]
-        #do math
-        dis = math.sqrt(time ** 2 - 4 * (-1) * (-min))
-        x1 = math.floor((time + dis) / (2 * (-1)))
-        x2 = math.ceil((time - dis) / (2 * (-1))) - 1
-        mul *= abs(x2 - x1)
+        mul *= calc(-1, time, -min_dist)
     print('Part 1:', mul)
-    dis = math.sqrt(big_time ** 2 - 4 * (-1) * (-big_dist))
-    x1 = math.floor((big_time + dis) / (2 * (-1)))
-    x2 = math.ceil((big_time - dis) / (2 * (-1))) - 1
-    print('Part 2:', abs(x2 - x1))
+    print('Part 2:', calc(-1, big_time, -big_dist))
 
 
 if __name__ == "__main__":
