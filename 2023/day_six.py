@@ -21,9 +21,7 @@ def main() -> None:
     big_dist = int("".join(lines[1].split(":")[1].strip().split()))
     mul = 1
     for i in range(len(times)):
-        min_dist = min_dists[i]
-        time = times[i]
-        mul *= calc(-1, time, -min_dist)
+        mul *= calc(-1, times[i], -min_dists[i])
     print('Part 1:', mul)
     print('Part 2:', calc(-1, big_time, -big_dist))
 
