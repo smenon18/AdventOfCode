@@ -11,15 +11,15 @@ def hand_values(hand1: list, hand2: list) -> int:
     freq_h1 = {}
     freq_h2 = {}
     ord_change = {'T': 58, 'J': 59, 'Q': 60, 'K': 61}
-    for idx, i in enumerate(hand1[0]):
+    for i, j in zip(hand1[0], hand2[0]):
         if i in freq_h1:
             freq_h1[i] += 1
         else:
             freq_h1[i] = 1
-        if hand2[0][idx] in freq_h2:
-            freq_h2[hand2[0][idx]] += 1
+        if j in freq_h2:
+            freq_h2[j] += 1
         else:
-            freq_h2[hand2[0][idx]] = 1
+            freq_h2[j] = 1
     if max(freq_h1.values()) > max(freq_h2.values()):
         return 1
     elif max(freq_h2.values()) > max(freq_h1.values()):
