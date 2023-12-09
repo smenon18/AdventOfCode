@@ -1,4 +1,5 @@
 import functools
+from collections import Counter
 
 
 def hand_values(hand1: list, hand2: list) -> int:
@@ -54,13 +55,43 @@ def main() -> None:
     with open('input/daySeven.txt', 'r') as file:
         hands = [(line.split()) for line in file.readlines()]
     hands.sort(key=functools.cmp_to_key(hand_values))
-    print(hands)
     multiplier = 1
     sum = 0
     for hand in hands:
         sum += (int(hand[1]) * multiplier)
         multiplier += 1
     print('Part1:', sum)
+    order = ['J', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'Q', 'K', 'A']
+    strength_card = {y: x for x, y in zip(range(len(order)), order)}
+    strength_hand = {
+        (1, 1, 1, 1, 1): 0,
+        (2, 1, 1, 1): 1,
+        (2, 2, 1): 2,
+        (3, 1, 1): 3,
+        (3, 2): 4,
+        (4, 1): 5,
+        (5,): 6
+    }
+    hand_str_to_idx = []
+    for i, hand in enumerate(hands):
+        cards = hand[0]
+        count = Counter(cards)
+        common = count.most_common(2)
+        if len(common) > 1:
+            if common[0][0] == 'J':
+                count[common[1][0]] += count['J']
+            else:
+                count[common[0][0]] += count['J']
+            del count['J']
+        act_hand = tuple(y for _, y in count.most_common())
+        strength = tuple([strength_hand[act_hand]] + [strength_card[c] for c in cards])
+        hand_str_to_idx.append([strength, i])
+    hand_str_to_idx.sort()
+    out = 0
+    for i in range(len(hand_str_to_idx)):
+        num = int(hands[hand_str_to_idx[i][1]][1]) * (i + 1)
+        out += num
+    print('Part 2:', out)
 
 
 if __name__ == '__main__':

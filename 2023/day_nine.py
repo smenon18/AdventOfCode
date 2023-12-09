@@ -14,11 +14,11 @@ def main() -> None:
         for val in vals[1:]:
             differences[0].append(val - prev)
             prev = val
-        while not set(differences[-1]) == set([0]):
-            dvals = differences[-1]
-            prev = dvals[0]
+        while not set(differences[-1]) == {0}:
+            d_vals = differences[-1]
+            prev = d_vals[0]
             next_diffs = []
-            for val in dvals[1:]:
+            for val in d_vals[1:]:
                 next_diffs.append(val - prev)
                 prev = val
             differences.append(next_diffs)
